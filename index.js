@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { exec } from "child_process";
-import { getMovie } from "./src/api.js";
+import { getEpisode, getMovie, getSeason, getSeries } from "./src/api.js";
 import { getCmd } from "./src/utils.js";
 
 async function main() {
@@ -44,7 +44,27 @@ async function main() {
       });
     } else if (choice === "series") {
       // call series func
-      const id = await getId(choice);
+      const query = await inquirer.prompt([
+        {
+          type: "input",
+          name: "query",
+          message: "enter series name:",
+        },
+      ]);
+      const id = await getSeries(query.query);
+      const season = await getSeason(id);
+      const episode = await getEpisode(id, season);
+
+      const STREAM_URL = `https://vidsrc.icu/embed/tv/${id}/${season}/${episode}`;
+      exec(`${CMD} ${STREAM_URL}`, (error, stdout, stderr) => {
+        if (error) {
+          throw new Error(error);
+        }
+        if (stderr) {
+          throw new Error(error);
+        }
+        console.log(stdout);
+      });
     } else if (choice === "anime") {
       // call anime func
       const id = await getId(choice);

@@ -42,7 +42,7 @@ async function main() {
         }
         console.log(stdout);
       });
-    } else if (choice === "series") {
+    } else if (choice === "series" || choice === "anime") {
       // call series func
       const query = await inquirer.prompt([
         {
@@ -65,9 +65,6 @@ async function main() {
         }
         console.log(stdout);
       });
-    } else if (choice === "anime") {
-      // call anime func
-      const id = await getId(choice);
     }
   } catch (error) {
     console.log(error);

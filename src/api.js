@@ -103,14 +103,16 @@ export async function getSeason(id) {
 
     const data = res.data.seasons;
 
-    const choices = data.map((result) => ({
-      name: `${result.name} (${result.air_date})`,
-      value: JSON.stringify({
-        title: result.name,
-        date: result.air_date,
-        season: result.season_number,
-      }),
-    }));
+    const choices = data
+      .filter((result) => result.season_number !== 0)
+      .map((result) => ({
+        name: `${result.name} (${result.air_date})`,
+        value: JSON.stringify({
+          title: result.name,
+          date: result.air_date,
+          season: result.season_number,
+        }),
+      }));
 
     spinner.success({ text: "seasons fetched" });
 

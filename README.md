@@ -8,19 +8,19 @@ BingeHub CLI is a command-line tool for browsing and selecting your favorite mov
 
 ## Installation
 
-<!--### via [npm](https://www.npmjs.com/)-->
-<!---->
-<!--To install BingeHub CLI globally, use npm:-->
-<!---->
-<!--```bash-->
-<!--npm install -g bingehub-cli-->
-<!--```-->
-<!---->
-<!--After installation, you can use the BingeHub CLI by typing `bingehub` in your terminal:-->
-<!---->
-<!--```bash-->
-<!--bingehub-->
-<!--```-->
+### via [npm](https://www.npmjs.com/package/bingehub-cli)
+
+To install BingeHub CLI globally, use npm:
+
+```bash
+npm install -g bingehub-cli
+```
+
+After installation, you can use the BingeHub CLI by typing `bingehub` in your terminal:
+
+```bash
+bingehub
+```
 
 ### via Source
 

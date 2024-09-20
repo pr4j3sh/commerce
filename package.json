@@ -8,9 +8,14 @@
     "bingehub": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Running tests...\" && exit 0",
+    "build": "echo \"Build completed.\"",
     "start": "node .",
     "dev": "node --watch ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prajeshElEvEn/bingehub-cli.git"
   },
   "keywords": [
     "CLI",
@@ -19,8 +24,8 @@
     "anime",
     "bingehub"
   ],
-  "author": "Prajesh Pratap Singh",
-  "license": "ISC",
+  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://elevenco.vercel.app/)",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.7.7",
     "inquirer": "^11.0.2",

@@ -1,17 +1,26 @@
 {
   "name": "bingehub-cli",
   "version": "1.0.0",
+  "description": "A CLI tool to browse movies, series, and anime.",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "bingehub": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "dev": "node --watch ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "CLI",
+    "movies",
+    "series",
+    "anime",
+    "bingehub"
+  ],
+  "author": "Prajesh Pratap Singh",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "axios": "^1.7.7",
     "inquirer": "^11.0.2",

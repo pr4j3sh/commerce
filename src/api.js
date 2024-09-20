@@ -2,6 +2,7 @@ import axios from "axios";
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
 import config from "../config.js";
+import { exit } from "process";
 
 export async function getMovie(query) {
   const spinner = createSpinner("fetching movies...").start();
@@ -38,13 +39,14 @@ export async function getMovie(query) {
     const { id } = JSON.parse(movie.movie);
 
     if (!id) {
-      throw new Error("movie not found");
+      spinner.error({ text: "movie not found" });
+      exit(1);
     }
 
     return id;
   } catch (error) {
     spinner.error({ text: "failed to fetch movies" });
-    throw new Error("unable to get the movie", error);
+    exit(1);
   }
 }
 
@@ -83,13 +85,14 @@ export async function getSeries(query) {
     const { id } = JSON.parse(series.series);
 
     if (!id) {
-      throw new Error("series not found");
+      spinner.error({ text: "series not found" });
+      exit(1);
     }
 
     return id;
   } catch (error) {
     spinner.error({ text: "failed to fetch series" });
-    throw new Error("unable to get the series", error);
+    exit(1);
   }
 }
 
@@ -127,13 +130,14 @@ export async function getSeason(id) {
     const { season } = JSON.parse(series.season);
 
     if (!season) {
-      throw new Error("season not found");
+      spinner.error({ text: "season not found" });
+      exit(1);
     }
 
     return season;
   } catch (error) {
     spinner.error({ text: "failed to fetch season" });
-    throw new Error("unable to get the season", error);
+    exit(1);
   }
 }
 
@@ -170,12 +174,13 @@ export async function getEpisode(id, season) {
     const { episode } = JSON.parse(series.episode);
 
     if (!episode) {
-      throw new Error("episode not found");
+      spinner.error({ text: "episode not found" });
+      exit(1);
     }
 
     return episode;
   } catch (error) {
     spinner.error({ text: "failed to fetch episode" });
-    throw new Error("unable to get the episode", error);
+    exit(1);
   }
 }

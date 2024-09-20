@@ -12,7 +12,7 @@ async function main() {
         type: "list",
         name: "choice",
         message: "what do you want to watch?",
-        choices: ["movie", "series", "anime"],
+        choices: ["movie", "series"],
       },
     ]);
 
@@ -42,7 +42,7 @@ async function main() {
         }
         console.log(stdout);
       });
-    } else if (choice === "series" || choice === "anime") {
+    } else if (choice === "series") {
       // call series func
       const query = await inquirer.prompt([
         {

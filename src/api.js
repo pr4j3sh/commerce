@@ -16,7 +16,7 @@ export async function getMovie(query) {
     const choices = data
       .filter((result) => result.media_type === "movie")
       .map((result) => ({
-        name: `${result.title || result.original_title} (${result.release_date.split("-")[0]})`,
+        name: `${result.title || result.original_title} | ${result.release_date.split("-")[0]}`,
         value: JSON.stringify({
           title: result.title || result.original_title,
           year: result.release_date.split("-")[0],
@@ -61,7 +61,7 @@ export async function getSeries(query) {
     const choices = data
       .filter((result) => result.media_type === "tv")
       .map((result) => ({
-        name: `${result.name || result.original_name} (${result.first_air_date.split("-")[0]})`,
+        name: `${result.name || result.original_name} | ${result.first_air_date.split("-")[0]}`,
         value: JSON.stringify({
           title: result.name || result.original_name,
           year: result.first_air_date.split("-")[0],
@@ -106,10 +106,9 @@ export async function getSeason(id) {
     const choices = data
       .filter((result) => result.season_number !== 0)
       .map((result) => ({
-        name: `${result.name} (${result.air_date})`,
+        name: `Season - ${result.season_number} | ${result.name}`,
         value: JSON.stringify({
           title: result.name,
-          date: result.air_date,
           season: result.season_number,
         }),
       }));
@@ -149,7 +148,7 @@ export async function getEpisode(id, season) {
     const data = res.data.episodes;
 
     const choices = data.map((result) => ({
-      name: `${result.name} (${result.air_date})`,
+      name: `Episode - ${result.episode_number} | ${result.name}`,
       value: JSON.stringify({
         title: result.name,
         date: result.air_date,

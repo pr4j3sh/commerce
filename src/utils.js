@@ -3,7 +3,7 @@ import { createSpinner } from "nanospinner";
 import { exit } from "process";
 
 export async function getCmd() {
-  const spinner = createSpinner("fetching os...").start();
+  const spinner = createSpinner("fetching OS...").start();
   const platform = os.platform();
 
   if (platform) {
@@ -16,8 +16,8 @@ export async function getCmd() {
     return "open";
   } else if (platform === "linux") {
     return "xdg-open";
-  } else {
-    spinner.error({ text: "failed to fetch os" });
-    exit(1);
   }
+
+  spinner.error({ text: "failed to detect the OS" });
+  exit(1);
 }

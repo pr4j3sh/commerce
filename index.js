@@ -10,7 +10,7 @@ async function main() {
   try {
     const CMD = await getCmd();
 
-    const answer = await inquirer.prompt([
+    const { choice } = await inquirer.prompt([
       {
         type: "list",
         name: "choice",
@@ -19,60 +19,50 @@ async function main() {
       },
     ]);
 
-    if (!answer) {
-      throw new Error("cannot handle prompt");
-    }
-
-    const choice = answer.choice;
-
     if (choice === "movie") {
-      const query = await inquirer.prompt([
+      const { query } = await inquirer.prompt([
         {
           type: "input",
           name: "query",
           message: "enter movie name:",
         },
       ]);
-      const id = await getMovie(query.query);
+      const id = await getMovie(query);
 
       const STREAM_URL = `https://vidsrc.icu/embed/movie/${id}`;
       exec(`${CMD} ${STREAM_URL}`, (error, stdout, stderr) => {
-        if (error) {
-          throw new Error(error);
-        }
-        if (stderr) {
-          throw new Error(error);
+        if (error || stderr) {
+          console.error("error opening stream:", error || stderr);
+          exit(1);
         }
         console.log(stdout);
       });
     } else if (choice === "series") {
-      // call series func
-      const query = await inquirer.prompt([
+      const { query } = await inquirer.prompt([
         {
           type: "input",
           name: "query",
           message: "enter series name:",
         },
       ]);
-      const id = await getSeries(query.query);
+      const id = await getSeries(query);
       const season = await getSeason(id);
       const episode = await getEpisode(id, season);
 
       const STREAM_URL = `https://vidsrc.icu/embed/tv/${id}/${season}/${episode}`;
       exec(`${CMD} ${STREAM_URL}`, (error, stdout, stderr) => {
-        if (error) {
-          throw new Error(error);
-        }
-        if (stderr) {
-          throw new Error(error);
+        if (error || stderr) {
+          console.error("error opening stream:", error || stderr);
+          exit(1);
         }
         console.log(stdout);
       });
     } else if (choice === "exit") {
-      exit();
+      console.log("exiting...");
+      exit(0);
     }
   } catch (error) {
-    console.log(error);
+    console.error("an error occurred:", error.message);
     exit(1);
   }
 }

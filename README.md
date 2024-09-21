@@ -1,6 +1,6 @@
 # BingeHub CLI
 
-![Demo](./assets/demo.mp4)
+https://github.com/user-attachments/assets/4d110e13-c0ba-41ce-9f6d-10164ad075c7
 
 BingeHub CLI is a command-line tool for browsing and selecting your favorite movies, series or anime. It allows users to explore media content directly from the terminal.
 

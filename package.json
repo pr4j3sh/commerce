@@ -1,6 +1,6 @@
 {
   "name": "bingehub",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A CLI tool to browse movies, series, and anime.",
   "main": "index.js",
   "type": "module",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prajeshElEvEn/bingehub.git"
+    "url": "https://github.com/pr4j3sh/bingehub.git"
   },
   "keywords": [
     "CLI",
@@ -24,7 +24,7 @@
     "anime",
     "bingehub"
   ],
-  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://elevenco.vercel.app/)",
+  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.7.7",

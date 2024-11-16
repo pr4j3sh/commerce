@@ -13,9 +13,13 @@ export async function getMovie(query) {
       config,
     );
 
-    const choices = res.data.results.map((result) => ({
-      name: `${result.title || result.original_title} | ${result.release_date.split("-")[0]}`,
-      value: result.id, // Directly store the id
+    const data = res.data.results.filter(
+      (item) => item.release_date && item.release_date != "",
+    );
+
+    const choices = data.map((result) => ({
+      name: `${result?.title || result?.original_title} | ${result?.release_date?.split("-")[0]}`,
+      value: result?.id,
     }));
 
     spinner.success({ text: "movies fetched" });
@@ -34,9 +38,9 @@ export async function getMovie(query) {
       exit(1);
     }
 
-    return movie; // movie is the id
+    return movie;
   } catch (error) {
-    console.error(error.message); // Log the error message
+    console.error(error.message);
     spinner.error({ text: "failed to fetch movies" });
     exit(1);
   }
@@ -52,8 +56,8 @@ export async function getSeries(query) {
     );
 
     const choices = res.data.results.map((result) => ({
-      name: `${result.name || result.original_name} | ${result.first_air_date.split("-")[0]}`,
-      value: result.id, // Directly store the id
+      name: `${result?.name || result?.original_name} | ${result?.first_air_date?.split("-")[0]}`,
+      value: result?.id,
     }));
 
     spinner.success({ text: "series fetched" });
@@ -72,9 +76,9 @@ export async function getSeries(query) {
       exit(1);
     }
 
-    return series; // series is the id
+    return series;
   } catch (error) {
-    console.error(error.message); // Log the error message
+    console.error(error.message);
     spinner.error({ text: "failed to fetch series" });
     exit(1);
   }
@@ -90,10 +94,10 @@ export async function getSeason(id) {
     );
 
     const choices = res.data.seasons
-      .filter((season) => season.season_number !== 0) // Filter out season 0
+      .filter((season) => season.season_number !== 0)
       .map((season) => ({
-        name: `Season - ${season.season_number} | ${season.name}`,
-        value: season.season_number, // Directly store the season number
+        name: `Season - ${season?.season_number} | ${season?.name}`,
+        value: season?.season_number,
       }));
 
     spinner.success({ text: "seasons fetched" });
@@ -112,9 +116,9 @@ export async function getSeason(id) {
       exit(1);
     }
 
-    return season; // season is the season number
+    return season;
   } catch (error) {
-    console.error(error.message); // Log the error message
+    console.error(error.message);
     spinner.error({ text: "failed to fetch season" });
     exit(1);
   }
@@ -130,8 +134,8 @@ export async function getEpisode(id, season) {
     );
 
     const choices = res.data.episodes.map((episode) => ({
-      name: `Episode - ${episode.episode_number} | ${episode.name}`,
-      value: episode.episode_number, // Directly store the episode number
+      name: `Episode - ${episode?.episode_number} | ${episode?.name}`,
+      value: episode?.episode_number,
     }));
 
     spinner.success({ text: "episodes fetched" });
@@ -150,9 +154,9 @@ export async function getEpisode(id, season) {
       exit(1);
     }
 
-    return episode; // episode is the episode number
+    return episode;
   } catch (error) {
-    console.error(error.message); // Log the error message
+    console.error(error.message);
     spinner.error({ text: "failed to fetch episode" });
     exit(1);
   }

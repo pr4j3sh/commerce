@@ -1,8 +1,6 @@
-# BingeHub
+# bingehub
 
-https://github.com/user-attachments/assets/4d110e13-c0ba-41ce-9f6d-10164ad075c7
-
-BingeHub CLI is a command-line tool for browsing and selecting your favorite movies, series or anime. It allows users to explore media content directly from the terminal.
+Browse and stream your favorite movies, series or anime via `CLI` or [website](https://bingehub-movies.vercel.app/).
 
 ### Pre-requisites
 
@@ -12,13 +10,11 @@ BingeHub CLI is a command-line tool for browsing and selecting your favorite mov
 
 ### via [npm](https://www.npmjs.com/package/bingehub-cli)
 
-To install BingeHub CLI globally, use npm:
-
 ```bash
 npm install -g bingehub
 ```
 
-After installation, you can use the BingeHub CLI by typing `bingehub` in your terminal:
+- After installation, you can use the BingeHub CLI by typing `bingehub` in your terminal:
 
 ```bash
 bingehub

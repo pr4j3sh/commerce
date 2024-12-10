@@ -13,10 +13,10 @@
     "start": "node .",
     "dev": "node --watch ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pr4j3sh/bingehub.git"
-  },
+  "files": [
+    "index.js",
+    "src/*.js"
+  ],
   "keywords": [
     "CLI",
     "movies",
@@ -26,6 +26,13 @@
   ],
   "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pr4j3sh/bingehub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pr4j3sh/bingehub/issues"
+  },
   "homepage": "https://bingehub-movies.vercel.app/",
   "dependencies": {
     "axios": "^1.7.7",

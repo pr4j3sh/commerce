@@ -1,7 +1,7 @@
 {
   "name": "bingehub",
-  "version": "1.0.7",
-  "description": "CLI for streaming movies, web series, and anime.",
+  "version": "1.0.8",
+  "description": "Stream movies, web series, and anime.",
   "main": "index.js",
   "type": "module",
   "bin": {
@@ -26,6 +26,7 @@
   ],
   "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
   "license": "MIT",
+  "homepage": "https://bingehub-movies.vercel.app/",
   "dependencies": {
     "axios": "^1.7.7",
     "inquirer": "^11.0.2",

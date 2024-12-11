@@ -1,6 +1,6 @@
 {
   "name": "bingehub",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Stream movies, web series, and anime.",
   "main": "index.js",
   "type": "module",
@@ -15,7 +15,7 @@
   },
   "files": [
     "index.js",
-    "src/*.js"
+    "src/**/*.js"
   ],
   "keywords": [
     "CLI",

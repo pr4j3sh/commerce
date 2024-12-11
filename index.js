@@ -3,7 +3,7 @@
 import inquirer from "inquirer";
 import { exec } from "child_process";
 import { getEpisode, getMovie, getSeason, getSeries } from "./src/api.js";
-import { getCmd } from "./src/utils.js";
+import { getCmd } from "./src/lib/utils.js";
 import { exit } from "process";
 
 async function main() {

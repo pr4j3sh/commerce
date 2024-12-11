@@ -1,7 +1,7 @@
 import axios from "axios";
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
-import config from "../config.js";
+import config from "./lib/config.js";
 import { exit } from "process";
 
 // Fetch movie

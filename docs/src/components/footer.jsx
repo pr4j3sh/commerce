@@ -2,7 +2,6 @@ export default function Footer({ author }) {
   return (
     <footer>
       <p>
-        &copy;{" "}
         <a href={author?.URL} target="_blank">
           {author?.USERNAME}
         </a>

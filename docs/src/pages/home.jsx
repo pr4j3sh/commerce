@@ -1,7 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import config from "../lib/config";
 import { MaterialSymbolsSearchRounded } from "../assets/icons/search-icon";
+import Card from "../components/card";
+import { formatData } from "../lib/utils";
 
 export default function Home() {
   const values = {
@@ -18,15 +20,7 @@ export default function Home() {
         config,
       );
 
-      const choices = res.data.results
-        .map((result) => ({
-          name: result?.title || result?.original_title,
-          release: result?.release_date || "",
-          poster: result?.backdrop_path || result?.poster_path,
-          rating: result?.vote_average || 0,
-          value: result?.id,
-        }))
-        .filter((choice) => choice.release !== "");
+      const choices = await formatData(res);
 
       setMovies(choices);
 
@@ -39,6 +33,26 @@ export default function Home() {
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
+
+  useEffect(() => {
+    async function getTrendingMovies() {
+      try {
+        const res = await axios.get(
+          `https://api.tmdb.org/3/trending/movie/day?&include_adult=false&language=en-US&page=1`,
+          config,
+        );
+
+        const choices = await formatData(res);
+
+        setMovies(choices);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getTrendingMovies();
+  }, []);
+
   return (
     <section>
       <article>
@@ -60,35 +74,7 @@ export default function Home() {
       </form>
       <section>
         {movies.length > 0
-          ? movies.map((movie) => (
-              <section className="card" key={movie?.value}>
-                <a
-                  href={`https://vidsrc.icu/embed/movie/${movie?.value}`}
-                  target="_blank"
-                >
-                  <img
-                    className="card-media"
-                    src={`https://image.tmdb.org/t/p/w500/${movie?.poster}`}
-                  />
-                </a>
-                <article className="card-body">
-                  <article className="flex items-start justify-between">
-                    <a
-                      href={`https://vidsrc.icu/embed/movie/${movie?.value}`}
-                      target="_blank"
-                    >
-                      <p className="font-bold">{movie?.name}</p>
-                    </a>
-                    <article className="flex items-center gap-2">
-                      {movie?.rating !== 0 && (
-                        <p className="tag">{movie?.rating?.toFixed(1)}</p>
-                      )}
-                      <p>{movie?.release?.split("-")[0]}</p>
-                    </article>
-                  </article>
-                </article>
-              </section>
-            ))
+          ? movies.map((movie) => <Card key={movie?.value} movie={movie} />)
           : null}
       </section>
     </section>

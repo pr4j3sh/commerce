@@ -1,6 +1,6 @@
 {
   "name": "bingehub",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Stream movies, web series, and anime.",
   "main": "index.js",
   "type": "module",
@@ -24,7 +24,7 @@
     "anime",
     "bingehub"
   ],
-  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
+  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.github.io/pr4j3sh/)",
   "license": "MIT",
   "repository": {
     "type": "git",
